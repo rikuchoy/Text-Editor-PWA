@@ -11,10 +11,10 @@ module.exports = () => {
     mode: 'development',
     entry: {
       main: './src/js/index.js',
-      install: './src/js/install.js'
-      database: './src/js/database.js'
-      eidtor: './src/js/editor.js'
-      header: './src/js/header.js'
+      install: './src/js/install.js',
+      database: './src/js/database.js',
+      editor: './src/js/editor.js',
+      header: './src/js/header.js',
     },
     output: {
       filename: '[name].bundle.js',
@@ -24,6 +24,10 @@ module.exports = () => {
       new HtmlWebpackPlugin({
         template: './index.html',
         title: 'JATE',
+      }),
+      new InjectManifest({
+        swSrc: './src-sw.js',
+        swDest: 'sw.js',
       }),
       new WebpackPwaManifest({
         name: 'Just Another Text Editor',
